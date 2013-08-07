@@ -1,3 +1,6 @@
+
+## Only for tangsan.im
+
 [![Build Status](https://travis-ci.org/ruhoh/ruhoh.rb.png?branch=master)](https://travis-ci.org/ruhoh/ruhoh.rb)
 
 ## Ruhoh is the Universal Static Blog API
