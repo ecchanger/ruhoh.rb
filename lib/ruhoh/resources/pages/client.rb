@@ -69,7 +69,7 @@ module Ruhoh::Resources::Pages
       ruhoh = @ruhoh
 
       begin
-        file = @args[2] || "untitled"
+        file = (Time.now.strftime('%Y-%m-%d-') + @args[2]) || "untitled"
         ext = File.extname(file).to_s
         ext  = ext.empty? ? @collection.config["ext"] : ext
 
@@ -90,6 +90,9 @@ module Ruhoh::Resources::Pages
 
       FileUtils.mkdir_p File.dirname(filename)
       output = (@collection.scaffold || '').gsub('{{DATE}}', Time.now.strftime('%Y-%m-%d'))
+      
+      output = output.gsub('{{TIME}}', Time.now.strftime('%H:%M:%S'))
+      output = output.gsub('{{FILE_NAME}}', @args[2] || "untitled")
 
       File.open(filename, 'w:UTF-8') {|f| f.puts output }
 
